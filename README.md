@@ -1,59 +1,191 @@
-# 🌟 Dumi Template
+# *Hello！欢迎使用WechatPush！*
 
-A doc template can assist you to develop libraries & write docs.
+# <span id="about">介绍</span>
 
-English | [简体中文](./README.zh-CN.md)
+*欢迎关注作者微信公众号【蛋壳的窝】*
 
-## 🚀 How to use?
+> 什么是WechatPush
 
-![](https://gw.alipayobjects.com/zos/bmw-prod/91791904-cdde-4408-959d-72fd0c9049b1/kj80x6lv_w1918_h352.png)
+**WechatPush** 是一个基于微信公众号开发接口实现的微信通知推送服务，你可以通过你自己的微信公众号/订阅号/测试号实现你自己的微信推送服务。配置完成后，只需要一段代码即可把信息推送到微信上，无需安装额外的软件即可做到信息实时通知。你可以使用**WechatPush**来做服务器报警通知、抢课通知、抢票通知、信息更新提示等。
 
-## ✨ Online preview
 
-https://umijs.github.io/dumi-template/
+# <span id="open">开源地址</span>
 
-## 📒 Catalog Introduction
+> 记得在Github上把星星点亮哦
 
+![Language](https://img.shields.io/badge/Language-Python-yellow)![LICENSE](https://img.shields.io/badge/LICENSE-MIT-red)![Author](https://img.shields.io/badge/Author-DanKe-blue)
+
+[([DanKE123abc/WechatPush: Python微信公众号/订阅号/测试号推送库 (github.com)](https://github.com/DanKE123abc/WechatPush)) 
+
+
+
+# <span id="see">效果预览</span>
+
+> 下面是效果预览
+
+| **类型** | 普通消息                 | 模板消息                 |
+| -------- | ------------------------ | ------------------------ |
+| 预览     | ![普通消息](.\img\1.jpg) | ![模板消息](.\img\2.jpg) |
+
+
+# <span id="words">名词解释</span>
+
+### appid
+
+你的微信公众号开发者接口中的appID
+
+### appsecret
+
+你的微信公众号开发者接口中的appsecret
+
+### openid
+
+你要发信息给的人的用户标识（独一无二，类似于微信号）
+
+### templateid
+
+发送模板消息时的模板id
+
+### message
+
+发送的信息，发送普通消息时为字符串，发送模板消息时为json
+
+### url
+
+发送模板消息时，点击“详情”后跳转到的网页，不填则发送的消息没有“详情”一栏
+
+# <span id="import">快速接入</span>
+
+> #### 我们推荐您使用[微信测试号](https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&t=sandbox/index)进行调试，无需注册，扫码登录即可使用！
+
+这里提供了一段源码帮你更好地理解使用方法
+
+```python
+import wechatpush
+wechatpush.push_text("xxxx这里是用户的openidxxxx","Hello World！TEXT")
+
+#msg消息必须按照模板配置！
+msg = {
+    "Title": {
+                "value":"Hello World! TEXTCARD"
+            },
+}
+wechatpush.push_textcard("vvvv这里是模板idvvvv","xxxx这里是用户的openidxxxx",msg)
 ```
-├── docs                   Component documentation
-│   ├── index.md           Home page
-│   └── **.**              Site Directory Document
-├── src                    Component home directory
-│   ├── index.ts           Component registration
-│   └── Foo                Component development
-├── .eslintrc.js           eslint config
-├── .fatherrc.ts           father config
-├── .umirc.ts              dumi config
-└── tsconfig.json          typescript config
+
+>  wechatpush启动流程：
+
+1.调用wechatpush --> 2.获取AccessToken --> 3.检查setting.py是否存在 --> 4.导入appid与appsecret --> 5.返回AccessToken
+
+## <span id="one">1.安装WechatPush库</span>
+
+把wechatpush.py放入项目文件夹内即可。
+
+```python
+import wechatpush
 ```
 
-The rest of the documents can be consulted by yourself.
+## <span id="two">2.配置setting</span>
 
-## 🤖 Command introduction
+在与软件同目录下创建setting.py文件，填入下面的代码：
 
-| Name                    | Description               | Remarks                                                                                                            |
-| ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `npm run start`         | Project begining          | Document usage [dumi](https://github.com/umijs/dumi), component development and documentation development together |
-| `npm run test`          | Component test            | -                                                                                                                  |
-| `npm run test:coverage` | Code coverage review      | -                                                                                                                  |
-| `npm run prettier`      | Code prettier             | -                                                                                                                  |
-| `npm run build`         | Component packaging       | Use [father](https://github.com/umijs/father)                                                                      |
-| `npm run release`       | Component package release | -                                                                                                                  |
-| `npm run docs:build`    | Document packaging        | -                                                                                                                  |
-| `npm run docs:deploy`   | Document release          | The default is to use GitHub Pages                                                                                 |
-| `npm run deploy`        | Document package release  | -                                                                                                                  |
+```python
+#--------------------wechatpush-----------------------
 
-### README Badge
-
-Using dumi ? Add a README badge to show it off: [![dumi](https://img.shields.io/badge/docs%20by-dumi-blue)](https://github.com/umijs/dumi)
-
-```
-[![dumi](https://img.shields.io/badge/docs%20by-dumi-blue)](https://github.com/umijs/dumi)
+APPID = '你自己的appid'
+APPSECRET = '你自己的appsecret'
 ```
 
-## Discuss group
+## <span id="three">3.发送消息</span>
 
-<div>
-  <img data-type="dingtalk" src="https://gw.alipayobjects.com/zos/bmw-prod/ce3439e7-3bf9-4031-b823-6473439ec9e6/kxkiis4c_w1004_h1346.jpeg" width="300" />
-  <img data-type="wechat" src="https://gw.alipayobjects.com/zos/bmw-prod/c18bc2a5-719a-48ca-b225-c79ef88bfb43/k7m10ymd_w1004_h1346.jpeg" width="300" />
-</div>
+##### 一：普通消息
+
+```python
+import wechatpush
+wechatpush.push_text("你要接收消息的openid","Hello World!")
+```
+
+##### 二：模板消息
+
+```python
+import wechatpush
+wechatpush.push_textcard("你要用的模板id"，"你要接收消息的openid","模板参数（json）","详情页url（选填）")
+```
+
+如果一切正常的话，errcode的值是0
+
+## <span id="qa">常见问题：</span>
+
+**1.软件报告 “setting.py not found”和“setting.py is created. Please re run it after configuration”**
+
+没有找到setting.py文件，自动生成了一个，需要您手动在setting.py中填写后重新启动。
+
+**2.软件报告 “appid or appsecret not found”**
+
+无法从setting.py读取appid或者appsecret，请检测setting.py是否已有此项。
+
+**3.软件报告 ”errcode = xxxxx“**
+
+见下表
+
+| 返回码 | 说明                   |
+| ------ | ---------------------- |
+| -1     | 系统繁忙               |
+| 0      | 请求成功               |
+| 40001  | 验证失败               |
+| 40002  | 不合法的凭证类型       |
+| 40003  | 不合法的OpenID         |
+| 40004  | 不合法的媒体文件类型   |
+| 40005  | 不合法的文件类型       |
+| 40006  | 不合法的文件大小       |
+| 40007  | 不合法的媒体文件id     |
+| 40008  | 不合法的消息类型       |
+| 40009  | 不合法的图片文件大小   |
+| 40010  | 不合法的语音文件大小   |
+| 40011  | 不合法的视频文件大小   |
+| 40012  | 不合法的缩略图文件大小 |
+| 40013  | 不合法的APPID          |
+| 41001  | 缺少access_token参数   |
+| 41002  | 缺少appid参数          |
+| 41003  | 缺少refresh_token参数  |
+| 41004  | 缺少secret参数         |
+| 41005  | 缺少多媒体文件数据     |
+| 41006  | access_token超时       |
+| 42001  | 需要GET请求            |
+| 43002  | 需要POST请求           |
+| 43003  | 需要HTTPS请求          |
+| 44001  | 多媒体文件为空         |
+| 44002  | POST的数据包为空       |
+| 44003  | 图文消息内容为空       |
+| 45001  | 多媒体文件大小超过限制 |
+| 45002  | 消息内容超过限制       |
+| 45003  | 标题字段超过限制       |
+| 45004  | 描述字段超过限制       |
+| 45005  | 链接字段超过限制       |
+| 45006  | 图片链接字段超过限制   |
+| 45007  | 语音播放时间超过限制   |
+| 45008  | 图文消息超过限制       |
+| 45009  | 接口调用超过限制       |
+| 46001  | 不存在媒体数据         |
+| 47001  | 解析JSON/XML内容错误   |
+
+# <span id="danke">使用须知</span>
+
+1.本库原作者为[蛋壳](https://github.com/DanKE123abc)，本项目遵循MIT开源协议，请遵守协议！
+
+2.本库是作为工具类而不是服务类，您的一切信息不会被泄露给作者，作者不负任何法律责任。
+
+3.本库是为了方便开发者朋友，与腾讯，微信及其他第三方服务无关。
+
+4.当您因使用本库造成任何重大事故时，作者不负任何责任！
+
+5.请勿使用本库进行一切违法国家法律法规的事情！
+
+# <span id="help">帮助作者</span>
+
+您的支持就是对我最大的鼓励！
+
+| 支付宝                | 微信                 |
+| --------------------- | -------------------- |
+| ![zfb](.\img\zfb.jpg) | ![zfb](.\img\wx.jpg) |
+
