@@ -9,7 +9,7 @@
  * [快速接入](#import)
  * * [安装WechatPush](#one)
  * * [配置setting](#two)
- * * [试着启动一下吧！](#three)
+ * * [发送消息](#three)
  * * [常见问题](#qa)
 
 * [使用须知](#danke)

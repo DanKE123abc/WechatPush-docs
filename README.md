@@ -75,7 +75,7 @@ wechatpush.push_textcard("vvvv这里是模板idvvvv","xxxx这里是用户的open
 
 >  wechatpush启动流程：
 
-1.调用wechatpush --> 2.获取AccessToken --> 3.检查setting.py是否存在 --> 4.导入appid与appsecret --> 5.返回AccessToken
+1.调用wechatpush --> 2.获取AccessToken --> 3.检查setting.py是否存在 --> 4.导入appid与appsecret --> 5.返回AccessToken --> 6.解析信息 --> 7.发送消息
 
 ## <span id="one">1.安装WechatPush库</span>
 
