@@ -23,9 +23,9 @@
 
 > 下面是效果预览
 
-| **类型** | 普通消息                 | 模板消息                 |
-| -------- | ------------------------ | ------------------------ |
-| 预览     | ![普通消息](.\img\1.jpg) | ![模板消息](.\img\2.jpg) |
+| **类型** | 普通消息                 | 模板消息                 | 带链接的消息      |
+| -------- | ------------------------ | ------------------------ | ----------------- |
+| 预览     | ![普通消息](.\img\1.jpg) | ![模板消息](.\img\2.jpg) | ![3](.\img\3.jpg) |
 
 
 # <span id="words">名词解释</span>
@@ -50,9 +50,17 @@
 
 发送的信息，发送普通消息时为字符串，发送模板消息时为json
 
+发送带链接的消息时，可以不填
+
 ### url
 
 发送模板消息时，点击“详情”后跳转到的网页，不填则发送的消息没有“详情”一栏
+
+发送带链接的消息时，点击链接标签跳转到的网页，不填则跳转到微信官网
+
+### label
+
+发送带链接的消息时，链接标签显示的信息，不填则显示”点击查看链接“
 
 # <span id="import">快速接入</span>
 
@@ -63,6 +71,7 @@
 ```python
 import wechatpush
 wechatpush.push_text("xxxx这里是用户的openidxxxx","Hello World！TEXT")
+wechatpush.push_url("xxxx这里是用户的openidxxxx","http://danke.ml","蛋壳的小站","Hello World URL")
 
 #msg消息必须按照模板配置！
 msg = {
@@ -102,7 +111,7 @@ APPSECRET = '你自己的appsecret'
 
 ```python
 import wechatpush
-wechatpush.push_text("你要接收消息的openid","Hello World!")
+wechatpush.push_text("你要接收消息的openid","你要发的消息")
 ```
 
 ##### 二：模板消息
@@ -110,6 +119,13 @@ wechatpush.push_text("你要接收消息的openid","Hello World!")
 ```python
 import wechatpush
 wechatpush.push_textcard("你要用的模板id"，"你要接收消息的openid","模板参数（json）","详情页url（选填）")
+```
+
+##### 二：带链接的消息
+
+```python
+import wechatpush
+wechatpush.push_url("你要接收消息的openid"，"标签跳转的链接","标签显示","你要发的消息")
 ```
 
 如果一切正常的话，errcode的值是0
