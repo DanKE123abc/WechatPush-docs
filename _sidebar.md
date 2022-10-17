@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 
-* [首页](/ "WechatPush官方文档")
+* [](/ "WechatPush官方文档")
 
  * [介绍](#about) 
  * [开源地址](#open)
