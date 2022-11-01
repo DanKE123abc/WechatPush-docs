@@ -15,7 +15,7 @@
 
 ![Language](https://img.shields.io/badge/Language-Python-yellow)![LICENSE](https://img.shields.io/badge/LICENSE-MIT-red)![Author](https://img.shields.io/badge/Author-DanKe-blue)
 
-[([DanKE123abc/WechatPush: Python微信公众号/订阅号/测试号推送库 (github.com)](https://github.com/DanKE123abc/WechatPush)) 
+[WechatPush: Python微信公众号/订阅号/测试号推送库](https://github.com/DanKE123abc/WechatPush))
 
 
 
