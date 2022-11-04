@@ -23,9 +23,11 @@
 
 > 下面是效果预览
 
-| **类型** | 普通消息                 | 模板消息                 | 带链接的消息      |
-| -------- | ------------------------ | ------------------------ | ----------------- |
-| 预览     | ![普通消息](.\img\1.jpg) | ![模板消息](.\img\2.jpg) | ![3](.\img\3.jpg) |
+| **类型** | 普通消息                 | 模板消息                 |
+| -------- | ------------------------ | ------------------------ |
+| 预览     | ![普通消息](.\img\1.jpg) | ![模板消息](.\img\2.jpg) |
+| **类型** | **带链接的消息**  | **TTS伪语音** |
+| 预览     | ![3](.\img\3.jpg) | ![4](.\img\4.jpg) |
 
 
 # <span id="words">名词解释</span>
@@ -52,6 +54,8 @@
 
 发送带链接的消息时，可以不填
 
+发送TTS伪语音时为语音朗读文本
+
 ### url
 
 发送模板消息时，点击“详情”后跳转到的网页，不填则发送的消息没有“详情”一栏
@@ -61,6 +65,20 @@
 ### label
 
 发送带链接的消息时，链接标签显示的信息，不填则显示”点击查看链接“
+
+### person
+
+发送TTS伪语音时的音色，默认为0
+
+| 音色码 | 实际音色 |
+| ------ | -------- |
+| 0      | 标准女音 |
+| 1      | 标准男音 |
+| 3      | 斯文男音 |
+
+### volume
+
+发送TTS伪语音时的音量，默认为2
 
 # <span id="import">快速接入</span>
 
@@ -80,6 +98,7 @@ msg = {
             },
 }
 wechatpush.push_textcard("vvvv这里是模板idvvvv","xxxx这里是用户的openidxxxx",msg)
+wechatpush.push_voice("xxxx这里是用户的openidxxxx","Hello World！TTS",3,5)
 ```
 
 >  wechatpush启动流程：
@@ -118,14 +137,21 @@ wechatpush.push_text("你要接收消息的openid","你要发的消息")
 
 ```python
 import wechatpush
-wechatpush.push_textcard("你要用的模板id"，"你要接收消息的openid","模板参数（json）","详情页url（选填）")
+wechatpush.push_textcard("你要用的模板id","你要接收消息的openid","模板参数（json）","详情页url（选填）")
 ```
 
-##### 二：带链接的消息
+##### 三：带链接的消息
 
 ```python
 import wechatpush
-wechatpush.push_url("你要接收消息的openid"，"标签跳转的链接","标签显示","你要发的消息")
+wechatpush.push_url("你要接收消息的openid","标签跳转的链接","标签显示","你要发的消息")
+```
+
+##### 四：TTS伪语音
+
+```python
+import wechatpush
+wechatpush.push_voice("你要接收消息的openid","你要发送的语音文本")
 ```
 
 如果一切正常的话，errcode的值是0
@@ -207,6 +233,12 @@ wechatpush.push_url("你要接收消息的openid"，"标签跳转的链接","标
 | ![zfb](.\img\zfb.jpg) | ![zfb](.\img\wx.jpg) |
 
 # <span id="logs">更新日志</span>
+
+#### v0.1.4
+
+修复了一些Bug
+
+支持发送TTS伪语音（实际上就是带链接的文本消息，TTS用的时百度的接口）
 
 #### v0.1.2
 
