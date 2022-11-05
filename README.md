@@ -1,5 +1,7 @@
 # *Hello！欢迎使用WechatPush！*
 
+当前版本：*v0.1.5*
+
 # <span id="about">介绍</span>
 
 *欢迎关注作者微信公众号【蛋壳的窝】*
@@ -108,7 +110,15 @@ wechatpush.push_voice("xxxx这里是用户的openidxxxx","Hello World！TTS",3,5
 
 ## <span id="one">1.安装WechatPush库</span>
 
-把wechatpush.py放入项目文件夹内即可。
+##### 运行以下命令：
+
+```python
+pip install py-WechatPush
+```
+
+*或者从仓库下载wechatpush.py放入项目文件夹内*
+
+
 
 ```python
 import wechatpush
@@ -234,6 +244,12 @@ wechatpush.push_voice("你要接收消息的openid","你要发送的语音文本
 | ![zfb](.\img\zfb.jpg) | ![zfb](.\img\wx.jpg) |
 
 # <span id="logs">更新日志</span>
+
+#### v0.1.5
+
+上传到pypi
+
+现在可以使用 pip install py-wechatpush 安装
 
 #### v0.1.4
 
