@@ -33,7 +33,7 @@
 | 预览     | ![3](.\img\3.jpg)        | ![4](.\img\4.jpg)        |
 
 
-# <span id="words">名词解释</span>
+# <span id="words">参数解释</span>
 
 ### appid
 
